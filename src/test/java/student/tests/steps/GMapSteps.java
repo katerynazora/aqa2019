@@ -1,13 +1,27 @@
 package student.tests.steps;
 
-import pages.YoutubePage;
+import pages.GoogleMapsPage;
 import util.WebDriverFacade;
 
-public class GSearchSteps {
+public class GMapSteps {
 
-    private final YoutubePage page = new YoutubePage(WebDriverFacade.getInstance());
+    private final GoogleMapsPage page;
+
+    private final static GMapSteps instance = new GMapSteps();
+
+    private GMapSteps() {
+        page = new GoogleMapsPage(WebDriverFacade.getInstance());
+    }
+
+    public static GMapSteps getInstance() {
+        return instance;
+    }
 
     public void loadPage() {
         page.loadPage();
+    }
+
+    public void search(String value) {
+        //TODO: fill method
     }
 }

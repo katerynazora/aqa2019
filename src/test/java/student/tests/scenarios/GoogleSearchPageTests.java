@@ -1,18 +1,22 @@
-package student.tests;
+package student.tests.scenarios;
 
 import org.testng.annotations.Test;
+import student.tests.steps.GSearchSteps;
 
 public class GoogleSearchPageTests extends AbstractTest {
 
+    private GSearchSteps steps = GSearchSteps.getInstance();
+
     @Test
-    public void someTest() throws InterruptedException {
-        googleSearchPage.load();
-        Thread.sleep(5000);
-        youtubePage.loadPage();
-        Thread.sleep(5000);
-        googleMapsPage.loadPage();
-        Thread.sleep(5000);
+    public void validatePageIsLoaded() {
+        steps.loadPage();
+        //TODO: validate page is loaded
     }
 
-
+    @Test
+    public void validateSearchRelevance() {
+        steps.loadPage();
+        steps.search("Mammamia");
+        steps.getFirstSearchResult();
+    }
 }

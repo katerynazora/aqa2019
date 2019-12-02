@@ -1,35 +1,26 @@
 package pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.Keys;
+import util.WebDriverFacade;
 
-public class GoogleSearchPage {
+public class GoogleSearchPage extends AbstractPage {
 
-    private static final String YOUTUBE_BTN_XPATH = "//a[contains(@href,'you')]";
+    private static final String PAGE_URL = "https://google.com";
 
-    private static final String IFRAME_XPATH = "//iframe";
-
-    private WebDriver driver;
-
-    public GoogleSearchPage(WebDriver driver) {
-        this.driver = driver;
-    }
-
-    public void load() {
-        driver.get("https://google.com/");
+    public GoogleSearchPage(WebDriverFacade facade) {
+        super(PAGE_URL, facade);
     }
 
     public void search(String searchInput) {
-
+        facade.getElementByXpath("//input[@name='q']").sendKeys(searchInput);
+        facade.getElementByXpath("//input[@name='q']").sendKeys(Keys.RETURN);
     }
 
     public void invokeGoogleMenu() {
-        driver.findElement(By.id("gbwa")).click();
+
     }
 
     public void selectMenuItem() {
-        driver.switchTo().frame(driver.findElement(By.xpath(IFRAME_XPATH)));
-        driver.findElement(By.xpath(YOUTUBE_BTN_XPATH)).click();
-        driver.switchTo().defaultContent();
+
     }
 }

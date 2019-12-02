@@ -1,24 +1,22 @@
-package student.tests;
+package student.tests.scenarios;
 
 import org.testng.annotations.Test;
-import pages.YoutubePage;
-import util.WebDriverFacade;
+import student.tests.steps.YoutubeSteps;
 
 public class YoutubePageTests extends AbstractTest {
 
-    public YoutubePageTests() {
-        super(new YoutubePage(WebDriverFacade.getInstance()));
+    private YoutubeSteps steps = YoutubeSteps.getInstance();
+
+    @Test
+    public void testYoutubeLoad() {
+        steps.loadPage();
+        //TODO: check assertTrue() if page has been loaded
     }
 
     @Test
-    public void someTest() throws InterruptedException {
-        googleSearchPage.load();
-        Thread.sleep(5000);
-        youtubePage.loadPage();
-        Thread.sleep(5000);
-        googleMapsPage.loadPage();
-        Thread.sleep(5000);
+    public void testYoutubeSearchRelevant() {
+        steps.loadPage();
+        steps.search("Mammamia");
+        // TODO: assert serach value: ABBA Mammamia
     }
-
-
 }

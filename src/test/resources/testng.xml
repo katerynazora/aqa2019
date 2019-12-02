@@ -3,7 +3,7 @@
 <suite name="Suite1" verbose="1" >
     <test name="Nopackage">
         <classes>
-            <class name="student.tests.MyTestNG" />
+            <class name="student.tests.scenarios.GoogleSearchPageTests" />
         </classes>
     </test>
 </suite>
