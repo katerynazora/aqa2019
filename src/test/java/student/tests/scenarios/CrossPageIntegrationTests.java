@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 public class CrossPageIntegrationTests extends AbstractTest {
 
     @Test
-    public void someTest() throws InterruptedException {
+    public void someTest() {
 
     }
 }

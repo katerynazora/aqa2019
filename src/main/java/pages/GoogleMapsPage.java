@@ -1,6 +1,5 @@
 package pages;
 
-import org.openqa.selenium.WebDriver;
 import util.WebDriverFacade;
 
 public class GoogleMapsPage extends AbstractPage {

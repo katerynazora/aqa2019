@@ -5,6 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
@@ -40,5 +42,13 @@ public class WebDriverFacade {
         if (driver != null) {
             driver.quit();
         }
+    }
+
+    public WebElement waitForElement(By locator) {
+        return new WebDriverWait(driver, 15).until(ExpectedConditions.presenceOfElementLocated(locator));
+    }
+
+    public List<WebElement> waitForElements(By locator) {
+        return driver.findElements(locator);
     }
 }
