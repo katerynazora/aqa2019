@@ -1,54 +1,29 @@
 package student.tests.steps;
 
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
-import pages.YoutubePage;
-import util.WebDriverFacade;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 
-public class YoutubeSteps {
+public class YoutubeSteps extends BaseStep {
 
-    private final YoutubePage page;
-
-    private final static YoutubeSteps instance = new YoutubeSteps();
-
-    private YoutubeSteps() {
-        page = new YoutubePage(WebDriverFacade.getInstance());
-    }
-
-    public static YoutubeSteps getInstance() {
-        return instance;
-    }
-
+    @Given("Youtube page is loaded")
     public void loadPage() {
-        page.loadPage();
+        youtubePage.loadPage();
     }
 
-    public boolean isPageLoaded() {
-        return page.getSearch().isDisplayed();
+    @When("I search for video {string}")
+    public void searchForVideo(String value) {
+        youtubePage.getSearch().sendKeys(value);
+        youtubePage.getSearchButton().click();
     }
 
-    public WebElement setSearchFieldValue(String value) {
-        WebElement input = page.getSearch();
-        input.click();
-        input.sendKeys(value);
-        return input;
+    @Then("Youtube page loaded successfully")
+    public void validatePageloaded() {
+        System.out.println("Youtube: Success!");
     }
 
-    public void search(String value, boolean useButton) {
-        if (useButton) {
-            setSearchFieldValue(value);
-            page.getSearchButton().click();
-        } else {
-            setSearchFieldValue(value).sendKeys(Keys.RETURN);
-        }
-    }
-
-    public boolean isValuePresentInTop(String value, int amountOfResults) {
-        for (WebElement element : page.getSearchResults().subList(0, amountOfResults)) {
-            if (element.getText().contains(value)) {
-                return true;
-            }
-        }
-        return false;
+    @Then("Youtube video found!")
+    public void validateVideoFound() {
+        System.out.println("validating...");
     }
 }

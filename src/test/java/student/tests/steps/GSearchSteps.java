@@ -1,37 +1,29 @@
 package student.tests.steps;
 
-import pages.GoogleSearchPage;
-import util.WebDriverFacade;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 
-public class GSearchSteps {
+public class GSearchSteps extends BaseStep {
 
-    private final GoogleSearchPage page;
-
-    private final static GSearchSteps instance = new GSearchSteps();
-
-    private GSearchSteps() {
-        page = new GoogleSearchPage(WebDriverFacade.getInstance());
-    }
-
-    public static GSearchSteps getInstance() {
-        return instance;
-    }
-
+    @Given("google page is loaded")
     public void loadPage() {
-        page.loadPage();
+        googleSearchPage.loadPage();
     }
 
-    public boolean isPageLoaded() {
-        //TODO: fill method
-        return false;
+    @When("I switch to {string} page")
+    public void switchTOPage(String value) {
+        youtubePage.loadPage();
+        System.out.println("Not implemented yet!");
     }
 
+    @When("I search for {string}")
     public void search(String value) {
-        //TODO: fill method
+        googleSearchPage.search(value);
     }
 
-    public String getFirstSearchResult() {
-        //TODO: fill method
-        return "";
+    @Then("{string} is present in search results")
+    public void isSearchResultPresent(String value) {
+        System.out.println("I've searched for " + value);
     }
 }

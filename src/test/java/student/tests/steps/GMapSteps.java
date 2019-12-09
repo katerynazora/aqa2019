@@ -3,7 +3,7 @@ package student.tests.steps;
 import pages.GoogleMapsPage;
 import util.WebDriverFacade;
 
-public class GMapSteps {
+public class GMapSteps extends BaseStep {
 
     private final GoogleMapsPage page;
 
