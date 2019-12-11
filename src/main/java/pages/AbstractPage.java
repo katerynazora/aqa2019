@@ -1,6 +1,5 @@
 package pages;
 
-import org.openqa.selenium.By;
 import util.WebDriverFacade;
 
 public abstract class AbstractPage {
@@ -19,7 +18,7 @@ public abstract class AbstractPage {
         facade.loadPage(url);
     }
 
-    public void takePageScreenshot(){
+    public void takePageScreenshot() {
         System.out.println("TODO: implement scrn");
     }
 }

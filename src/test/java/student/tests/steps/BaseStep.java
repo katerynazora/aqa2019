@@ -37,7 +37,6 @@ public class BaseStep {
     public void scenario(PickleEventWrapper pickleEvent, CucumberFeatureWrapper cucumberFeature) throws Throwable {
         testNGCucumberRunner.runScenario(pickleEvent.getPickleEvent());
     }
-
     @DataProvider
     public Object[][] scenarios() {
         return testNGCucumberRunner.provideScenarios();

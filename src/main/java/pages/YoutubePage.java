@@ -25,4 +25,13 @@ public class YoutubePage extends AbstractPage {
     public List<WebElement> getSearchResults() {
         return facade.waitForElements(By.id("video-title"));
     }
+
+    public boolean isValuePresentInTop(String value) {
+        for (WebElement element : getSearchResults()) {
+            if (element.getText().contains(value)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
